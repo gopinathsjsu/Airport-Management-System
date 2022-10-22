@@ -53,11 +53,11 @@ Team Members:
 ## Contributions 
 
 
-### Vikas Tadepu
+### Vikas Tadepu(015964468)
 
-### Thanuj Kumar Janugani
+### Thanuj Kumar Janugani(015963285)
 
-### Varun Raj Badri
+### Varun Raj Badri(015918006)
 
 ### Jatin Lingala
 
