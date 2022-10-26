@@ -29,3 +29,16 @@ def airportsignup():
 		return {"message":"The User with current Email already exists"}
 	return {}
 
+@app.route("/airlinesignup",methods = ['get','post'])
+def airlinesignup():
+	collection=db['AirlineEmployee']
+	if request.method == "POST":
+		d = request.json
+		d['approved'] = 0
+		if collection.find_one({"email":d["email"]}) == None:
+			collection.insert_one(d)
+			collection=db['PendingRequests']
+			collection.insert_one({"Airline":1,"name":d['name'],"email":d['email']})
+			return {"message":"Your signup request has been sent for approval"}
+		return {"message":"The User with current Email already exists"}
+	return {}
