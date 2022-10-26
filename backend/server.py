@@ -77,6 +77,7 @@ def airportlogin():
 		session['org'] = 'airport'
 		return {"message":"Success"}
 	return {}
+
 @app.route("/approverequests",methods = ['get','post'])
 def approveRequests():
 	if "username" in session and session['org'] == 'airport':
@@ -140,3 +141,4 @@ def insert_airline():
 			return {"message":"The Airline is already present in the list"}
 		return a
 	return {"message":"You cannot access this page"}
+
