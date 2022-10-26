@@ -77,3 +77,39 @@ def airportlogin():
 		session['org'] = 'airport'
 		return {"message":"Success"}
 	return {}
+
+@app.route("/approverequests",methods = ['get','post'])
+def approveRequests():
+	if "username" in session and session['org'] == 'airport':
+		collection = db['PendingRequests']
+		if request.method == "POST":
+			d = request.json
+			email = d['email']
+			pending_user = collection.find_one({"email":email})
+			if pending_user == None:
+				return {"message":"No such user exists"}
+			if "Airport" in pending_user:
+				airportemployee_collection = db['AirportEmployee']
+				user = airportemployee_collection.find_one({"email":email})
+				if user == None:
+					return {"message":"No such user exists"}
+				airportemployee_collection.update_one({"email":email},{"$set":{"approved":1}})
+			if "Airline" in pending_user:
+				airportemployee_collection = db['AirlineEmployee']
+				user = airportemployee_collection.find_one({"email":email})
+				if user == None:
+					return {"message":"No such user exists"}
+				airportemployee_collection.update_one({"email":email},{"$set":{"approved":1}})
+			collection.delete_one({"email":email})
+			return {"message":"User Has been Approved successfully"}
+		airport_pending = []
+		airline_pending = []
+		# print(list(collection.find()))
+		for i in list(collection.find()):
+			del i['_id']
+			if 'Airport' in i:	
+				airport_pending.append(i)
+			if 'Airline' in i:
+				airline_pending.append(i)
+		return {"message":"Data fetched successfully","data":{"Airport":airport_pending,"Airline":airline_pending}}
+	return {"message":"You cannot access this page"}
