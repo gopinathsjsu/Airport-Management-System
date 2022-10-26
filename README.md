@@ -96,6 +96,7 @@ Team Members:
 
 
 
+![WhatsApp Image 2022-10-26 at 1 44 17 PM](https://user-images.githubusercontent.com/54031828/198146885-79e95b55-2862-405d-8711-c6c334e72da0.jpeg)
 
 
 
