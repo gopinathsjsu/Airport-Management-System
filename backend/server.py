@@ -42,3 +42,20 @@ def airlinesignup():
 			return {"message":"Your signup request has been sent for approval"}
 		return {"message":"The User with current Email already exists"}
 	return {}
+@app.route("/airlinelogin",methods = ['get','post'])
+def airlinelogin():
+	collection = db['AirlineEmployee']
+	if request.method == "POST":
+		d = request.json
+		entry = collection.find_one({"email":d["email"]})
+		if entry == None:
+			return {"message":"User doesnot exist"}
+		if entry['password']!=d['password']:
+			return {"message":"Enter correct password"}
+		if entry['approved'] != 1:
+			return {"message":"Your request has not been approved"}
+		session['username'] = d['email']
+		session['name'] = entry['name']
+		session['org'] = 'airline'
+		return {"message":"Success"}
+	return {}
