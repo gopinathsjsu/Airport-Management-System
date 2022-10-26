@@ -142,3 +142,24 @@ def insert_airline():
 		return a
 	return {"message":"You cannot access this page"}
 
+@app.route("/insertgate",methods = ['get','post'])
+def insertgate():
+	if "username" in session and session['org'] == 'airport':
+		if request.method == "POST":
+			d = request.json
+			d["lastAssignedFlight"] = ""
+			d["lastAssignedTime"] = 0
+			d["status"] = 0
+			collection = db['gates']
+			if collection.find_one({'name':d['name']}) == None:
+				collection.insert_one(d)
+				return {"message":"Success"}
+			return {"message":"The gate is already present in the list"}
+		collection = db['gates']
+		gates = []
+		for i in collection.find():
+			del i['_id']
+			gates.append(i)
+		return {"message":"Success", "data":gates}
+	return {"message":"You cannot access this page"}
+
