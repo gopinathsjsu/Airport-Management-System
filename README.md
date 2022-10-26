@@ -76,8 +76,8 @@ Team Members:
 ## TECH STACK USED:
 
 - Frontend: Html,Javascript,Bootstrap,css,ReactJS
-- Backend: django
-- Database: RDS MySQL
+- Backend: Flask
+- Database: Mongodb
 - REST API: Postman(Testing APIs)
 - Cloud: AWS EC2
 
@@ -89,6 +89,10 @@ Team Members:
   
 
 ## UI Wireframes:
+
+
+
+## ER DIAGRAM:
 
 
 
