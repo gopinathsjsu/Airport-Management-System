@@ -60,9 +60,9 @@ def airlinelogin():
 		return {"message":"Success"}
 	return {}
 
-@app.route("/airlinelogin",methods = ['get','post'])
-def airlinelogin():
-	collection = db['AirlineEmployee']
+@app.route("/airportlogin",methods = ['get','post'])
+def airportlogin():
+	collection = db['AirportEmployee']
 	if request.method == "POST":
 		d = request.json
 		entry = collection.find_one({"email":d["email"]})
@@ -74,6 +74,6 @@ def airlinelogin():
 			return {"message":"Your request has not been approved"}
 		session['username'] = d['email']
 		session['name'] = entry['name']
-		session['org'] = 'airline'
+		session['org'] = 'airport'
 		return {"message":"Success"}
 	return {}
