@@ -113,3 +113,32 @@ def approveRequests():
 				airline_pending.append(i)
 		return {"message":"Data fetched successfully","data":{"Airport":airport_pending,"Airline":airline_pending}}
 	return {"message":"You cannot access this page"}
+
+@app.route("/getairlines")
+def getairlines():
+	collection = db['Airlines']
+	airlines = []
+	airlinecodes = []
+	for i in collection.find():
+		airlines.append(i['name'])
+		airlinecodes.append(i['code'])
+	return {"message":"Success","data":airlines,"codes" : airlinecodes}
+
+
+@app.route("/insertairline",methods = ['get','post'])
+def insert_airline():
+	if "username" in session and session['org'] == 'airport':
+		a = getairlines()
+		if request.method == "POST":
+			collection = db['Airlines']
+			data = request.json
+			for i in a["codes"]:
+				if i == data['code']:
+					return {"message":"The Airline with given code is already present in the list"}
+			if collection.find_one({'name':data['name']})==None:
+				collection.insert_one({"name":data['name'],"country":data['country'],"code":data['code']})
+				return {"message":"Airline has been inserted succesfully"}
+			return {"message":"The Airline is already present in the list"}
+		return a
+	return {"message":"You cannot access this page"}
+
