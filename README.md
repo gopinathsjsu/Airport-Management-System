@@ -75,7 +75,7 @@ Team Members:
 
 ## TECH STACK USED:
 
-- Frontend: Html,Javascript,Bootstrap,css,ReactJS
+- Frontend: Html,Javascript,css,ReactJS
 - Backend: Flask
 - Database: Mongodb
 - REST API: Postman(Testing APIs)
