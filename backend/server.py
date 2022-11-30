@@ -302,3 +302,25 @@ def addflight():
 			all_flights.append(i)
 		return {"message":"Success","data" : all_flights,"currenttime":"-".join(str(datetime.datetime.now(tz=timezone('US/Pacific')) - datetime.timedelta(hours = 1)).split("-")[:-1])}
 	return {"message":"You cannot access this page"}
+
+@app.route("/api/modifyflight",methods = ['get','post'])
+def modifyflight():
+	collection = db['flights']
+	if "username" in session and session['org'] == 'airline':
+		if request.method == "POST":
+			d = request.json
+			a = collection.find_one({"name":d['name']})
+			if a == None:
+				return {"message":"No flight exists with the given name"}
+			time = datetime.datetime.strptime(d['time'], "%d %m %y %H %M")
+			time = time.timestamp()+(time - time.astimezone(tz=timezone('US/Pacific')).replace(tzinfo=None)).total_seconds()
+			# print(time,time.timestamp())
+			collection.update_one({"name":d["name"]},{"$set":{"time": time,"baggage":"","gate":""}})
+			return {"message":"Data has been modifed successfully"}
+		airline_company = db['AirlineEmployee'].find_one({"email":session["username"]})['airline']
+		all_flights = []
+		for i in collection.find({"airline":airline_company}).sort("time",-1):
+			del i['_id']
+			all_flights.append(i)
+		return {"message":"Success","data" : all_flights}
+	return {"message":"You cannot access this page"}
