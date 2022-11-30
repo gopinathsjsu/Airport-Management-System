@@ -57,7 +57,7 @@ Cloud- Aws
 
 REST API: Postman(Testing APIs)
 
-#Scrum Meeting Schedule-Monday,Saturday
+#Scrum Meeting Schedule-Monday,Saturday-2pm
 
 ### <a href="https://github.com/gopinathsjsu/team-project-sunrisers">Github Repo</a>
 
