@@ -39,9 +39,9 @@ https://docs.google.com/spreadsheets/d/1xVN1TYFBGojNXxERLfRykjC6AGKlkUP404rh5YZa
 
 Team Members:
 
-- Vikas Tadepu
-- Thanuj Kumar Janugani
-- Varun Raj Badri
+- Vikas Tadepu (015964468)
+- Thanuj Kumar Janugani (015963285)
+- Varun Raj Badri (015918006)
 - Jatin Lingala (016699124)
 
 ### <a href="https://github.com/gopinathsjsu/team-project-sunrisers">Github Repo</a>
@@ -53,13 +53,13 @@ Team Members:
 ## Contributions 
 
 
-### Vikas Tadepu(015964468)
+### Vikas Tadepu (015964468)
 
-### Thanuj Kumar Janugani(015963285)
+### Thanuj Kumar Janugani (015963285)
 
-### Varun Raj Badri(015918006)
+### Varun Raj Badri (015918006)
 
-### Jatin Lingala
+### Jatin Lingala (016699124)
 
 
 
