@@ -414,3 +414,27 @@ def forceclosebaggage():
 				i['lastAssignedTime'] = "None"
 		return {"message":"Success", "data":baggages}
 	return {"message":"You cannot access this page"}
+
+@app.route('/api/logout')
+def logout():
+	print(session)
+	session.clear()
+	print(session)
+	return {"message":"Success"}
+
+# Route for seeing a data
+@app.route('/api/data')
+def get_time():
+
+	# Returning an api for showing in reactjs
+	return {
+		'Name':"geek",
+		"Age":"22",
+		"Date":x,
+		"programming":"python"
+		}
+
+	
+# Running app
+if __name__ == '__main__':
+	app.run(debug=True)
