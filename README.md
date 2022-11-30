@@ -89,7 +89,9 @@ Team Members:
   
 
 ## UI Wireframes:
-<img width="689" alt="Screenshot 2022-11-29 at 10 50 37 PM" src="https://user-images.githubusercontent.com/54031828/204728578-cf5bac35-7d7c-42bf-b89c-95ccd7af1fd6.png">
+<img width="693" alt="Screenshot 2022-11-29 at 10 56 14 PM" src="https://user-images.githubusercontent.com/54031828/204728864-95c76d23-639a-402e-b32b-65fc87b69571.png">
+
+
 
 
 
