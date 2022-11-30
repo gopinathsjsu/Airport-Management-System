@@ -44,6 +44,16 @@ Team Members:
 - Varun Raj Badri (015918006)
 - Jatin Lingala (016699124)
 
+#Tools and Languages
+Tech Stack-
+Frontend -React
+Backend- Flask 
+Datbase-Mongodb
+Cloud- Aws
+REST API: Postman(Testing APIs)
+
+#Scrum Meeting Schedule-Monday,Saturday
+
 ### <a href="https://github.com/gopinathsjsu/team-project-sunrisers">Github Repo</a>
 
 ## Responsibilities
@@ -73,13 +83,6 @@ Team Members:
 - Mock-ups of how the front-end will look like on Figma. <br>
 - Every Standup contains a discussion of the work completed, the obstacles encountered, and any deviations from the diagrams and mockups in the implementation.
 
-## TECH STACK USED:
-
-- Frontend: Html,Javascript,Bootstrap,css,ReactJS
-- Backend: Flask
-- Database: Mongodb
-- REST API: Postman(Testing APIs)
-- Cloud: AWS EC2
 
 ## TASKS COMPLETED:
 
