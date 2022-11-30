@@ -53,13 +53,13 @@ Team Members:
 ## Contributions 
 
 
-### Vikas Tadepu (015964468)
+### Vikas Tadepu : Front-End and Back-End
 
-### Thanuj Kumar Janugani (015963285)
+### Thanuj Kumar Janugani: Front-End and Back-End
 
-### Varun Raj Badri (015918006)
+### Varun Raj Badri: Front-End and Back-End
 
-### Jatin Lingala (016699124)
+### Jatin Lingala:Front-End and Back-End
 
 
 
