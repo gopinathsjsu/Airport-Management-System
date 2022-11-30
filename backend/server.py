@@ -324,3 +324,44 @@ def modifyflight():
 			all_flights.append(i)
 		return {"message":"Success","data" : all_flights}
 	return {"message":"You cannot access this page"}
+
+@app.route("/api/getflights")
+def getflights():
+	flights_collection = db['flights']
+	flight = [[],[],[]]
+	onehr = [0,0,0]
+	twohr = [0,0,0]
+	threehr = [0,0,0]
+	d = {'A':1,'D':2}
+	for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))}}).sort('time'):
+		del i['_id']
+		i['time'] ="-".join(str(datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific'))).split("-")[:-1])
+		flight[d[i['status']]].append(i)
+		onehr[0]+=1
+		flight[0].append(i)
+		onehr[d[i['status']]]+=1
+	for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+7200,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600}}).sort('time'):
+		del i['_id']
+		i['time'] ="-".join(str(datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific'))).split("-")[:-1])
+		flight[0].append(i)
+		flight[d[i['status']]].append(i)
+		twohr[d[i['status']]]+=1
+		twohr[0]+=1
+	for i in range(3):
+		twohr[i] += onehr[i]
+	for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+10800,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+7200}}).sort('time'):
+		del i['_id']
+		i['time'] ="-".join(str(datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific'))).split("-")[:-1])
+		flight[0].append(i)
+		flight[d[i['status']]].append(i)
+		threehr[d[i['status']]]+=1
+		threehr[0]+=1
+	for i in range(3):
+		threehr[i]+= twohr[i]
+	l1 = [[],[],[]]
+	l2 = [onehr,twohr,threehr]
+	for i in range(3):
+		for j in range(3):
+			l1[j].append(l2[i][j])
+	print(l1,l2)
+	return {'data':flight,'time' : l1}
