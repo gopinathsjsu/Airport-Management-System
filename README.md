@@ -89,7 +89,23 @@ Team Members:
   
 
 ## UI Wireframes:
-<img width="693" alt="Screenshot 2022-11-29 at 10 56 14 PM" src="https://user-images.githubusercontent.com/54031828/204728864-95c76d23-639a-402e-b32b-65fc87b69571.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 50 37 PM" src="https://user-images.githubusercontent.com/54031828/204728985-3c03aa08-b2aa-4aa2-9717-c8d62cb0db8f.png">
+<img width="690" alt="Screenshot 2022-11-29 at 10 52 18 PM" src="https://user-images.githubusercontent.com/54031828/204729013-13be70d0-3bd5-4243-9def-0791f78f2fa0.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 52 33 PM" src="https://user-images.githubusercontent.com/54031828/204729036-4498235b-5b60-4649-a379-890b023bb05b.png">
+<img width="688" alt="Screenshot 2022-11-29 at 10 53 01 PM" src="https://user-images.githubusercontent.com/54031828/204729054-db334737-9e3f-4ee6-bde7-93130a1a4fe1.png">
+<img width="691" alt="Screenshot 2022-11-29 at 10 53 16 PM" src="https://user-images.githubusercontent.com/54031828/204729075-0fadf582-aa73-4eb5-b953-30e9fed8e83a.png">
+<img width="692" alt="Screenshot 2022-11-29 at 10 53 28 PM" src="https://user-images.githubusercontent.com/54031828/204729083-3dce438c-f5ce-4a09-ab87-8c878296be06.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 54 16 PM" src="https://user-images.githubusercontent.com/54031828/204729090-699053f7-f21a-4031-bada-79ec0fc20e92.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 54 30 PM" src="https://user-images.githubusercontent.com/54031828/204729106-c266ea54-dded-4d03-bca0-60a5a4d6a773.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 54 41 PM" src="https://user-images.githubusercontent.com/54031828/204729114-95f7b48d-5099-45c4-8f3f-0d3349c73d1c.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 54 51 PM" src="https://user-images.githubusercontent.com/54031828/204729124-77181bc9-6f64-4da4-ab11-3cbb6a81d4e6.png">
+<img width="690" alt="Screenshot 2022-11-29 at 10 55 02 PM" src="https://user-images.githubusercontent.com/54031828/204729156-90d4246d-c489-4e19-a126-610d466b00b9.png">
+<img width="691" alt="Screenshot 2022-11-29 at 10 55 13 PM" src="https://user-images.githubusercontent.com/54031828/204729172-d736e4a8-caf8-45c4-bf85-313269b041cf.png">
+<img width="691" alt="Screenshot 2022-11-29 at 10 55 28 PM" src="https://user-images.githubusercontent.com/54031828/204729200-be04d0c3-ca26-45dc-9512-021e80ae6286.png">
+<img width="689" alt="Screenshot 2022-11-29 at 10 56 03 PM" src="https://user-images.githubusercontent.com/54031828/204729207-d3891b6a-5671-41f7-bf84-7ec9bf33fa41.png">
+<img width="693" alt="Screenshot 2022-11-29 at 10 56 14 PM" src="https://user-images.githubusercontent.com/54031828/204729220-402b8e8a-7fea-4167-86be-18c7abf30d09.png">
+
+
 
 
 
