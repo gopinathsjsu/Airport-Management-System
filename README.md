@@ -45,12 +45,17 @@ Team Members:
 - Jatin Lingala (016699124)
 
 #Tools and Languages
-#Tech Stack-
-#Frontend -React
-#Backend- Flask 
-#Datbase-Mongodb
-#Cloud- Aws
-#REST API: Postman(Testing APIs)
+Tech Stack-
+
+Frontend -React
+
+Backend- Flask 
+
+Datbase-Mongodb
+
+Cloud- Aws
+
+REST API: Postman(Testing APIs)
 
 #Scrum Meeting Schedule-Monday,Saturday
 
