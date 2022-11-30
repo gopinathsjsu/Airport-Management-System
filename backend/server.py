@@ -387,3 +387,30 @@ def forceclosegate():
 			gates.append(i)
 		return {"message":"Success", "data":gates}
 	return {"message":"You cannot access this page"}
+
+@app.route("/api/forceclosebaggage",methods = ['get','post'])
+def forceclosebaggage():
+	flights_collection = db['flights']
+	if "username" in session and session['org'] == 'airport':
+		if request.method == "POST":
+			d = request.json
+			collection = db['baggages']
+			if collection.find_one({"name":d['name']}) == None:
+				return {"message":"No baggage exists with the given name"}
+			collection.update_one({"name":d["name"]},{"$set":{"status":int(d['status']),"comments":d["comments"]}})
+			for i in flights_collection.find({"time":{'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))-3000},"baggage":d['name']}):
+				flights_collection.update_one({'name':i['name']},{"$set":{'baggage':"","gate":""}})
+				assignflights()
+			return {"message":"Baggage has been modifed","status":"success"}
+		collection = db['baggages']
+		baggages = []
+		for i in collection.find():
+			del i['_id']
+			baggages.append(i)
+			try:
+				if i['lastAssignedTime'] !=0:
+					i['lastAssignedTime'] = datetime.datetime.fromtimestamp(i['lastAssignedTime'],tz=timezone('US/Pacific'))
+			except:
+				i['lastAssignedTime'] = "None"
+		return {"message":"Success", "data":baggages}
+	return {"message":"You cannot access this page"}
