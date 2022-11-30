@@ -365,3 +365,25 @@ def getflights():
 			l1[j].append(l2[i][j])
 	print(l1,l2)
 	return {'data':flight,'time' : l1}
+
+@app.route("/api/forceclosegate")
+def forceclosegate():
+	flights_collection = db['flights']
+	if "username" in session and session['org'] == 'airport':
+		if request.method == "POST":
+			d = request.json
+			collection = db['gates']
+			if collection.find_one({"name":d['name']}) == None:
+				return {"message":"No gate exists with the given name"}
+			collection.update_one({"name":d["name"]},{"$set":{"status":int(d['status']),"comments":d["comments"]}})
+			for i in flights_collection.find({"time":{'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))-3000},"gate":d['name']}):
+				flights_collection.update_one({'name':i['name']},{"$set":{'gate':"","baggage":""}})
+				assignflights()
+			return {"message":"Modified successfully",'status':"success"}
+		collection = db['gates']
+		gates = []
+		for i in collection.find():
+			del i['_id']
+			gates.append(i)
+		return {"message":"Success", "data":gates}
+	return {"message":"You cannot access this page"}
