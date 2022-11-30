@@ -226,3 +226,42 @@ def modifybaggage():
 				i['lastAssignedTime'] = "None"
 		return {"message":"Success", "data":baggages}
 	return {"message":"You cannot access this page"}
+
+
+@app.route("/api/addflights",methods = ["get","post"])
+def addflight():
+	collection = db['flights']
+	if "username" in session and session['org'] == 'airline':
+		if request.method == "POST":
+			d = request.json
+			time = datetime.datetime.strptime(d['time'], "%d %m %y %H %M")
+			time = time.timestamp()+(time - time.astimezone(tz=timezone('US/Pacific')).replace(tzinfo=None)).total_seconds()
+			d['time'] = time
+			d['baggage'] = ''
+			d['gate'] = ''
+			airline_employee_collection = db['AirlineEmployee']
+			employee_data = airline_employee_collection.find_one({"email":session['username']})
+			if employee_data== None:
+				return {"message":"Access denied",}
+			airlineemp = db['AirlineEmployee'].find_one({"email":session['username']})
+			if airlineemp == None:
+				return {"message":"You cannot access this page"}
+			print(airlineemp)
+			flight_code = db['Airlines'].find_one({"code":airlineemp['airline']})
+			if flight_code == None:
+				return {"message":"You cannot access this page"}
+			flight_code = flight_code["code"]
+			d['airline'] = employee_data['airline']
+			d['name'] = flight_code + str(d['name'])
+			if collection.find_one({"name":d['name']}) == None:
+				collection.insert_one(d)
+				return {"message":"Data has been inserted successfully","status":"success"}
+			return {"message":"A flight already exists with the name"}
+		airline_company = db['AirlineEmployee'].find_one({"email":session["username"]})['airline']
+		all_flights = []
+		for i in collection.find({"airline":airline_company}).sort("time",-1):
+			del i['_id']
+			i['time'] ="-".join(str(datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific'))).split("-")[:-1])
+			all_flights.append(i)
+		return {"message":"Success","data" : all_flights,"currenttime":"-".join(str(datetime.datetime.now(tz=timezone('US/Pacific')) - datetime.timedelta(hours = 1)).split("-")[:-1])}
+	return {"message":"You cannot access this page"}
