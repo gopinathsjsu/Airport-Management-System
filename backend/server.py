@@ -26,7 +26,7 @@ def airportsignup():
 			collection=db['PendingRequests']
 			collection.insert_one({"Airport":1,"name":d['name'],"email":d['email']})
 			return {"message":"Your signup request has been sent for approval"}
-		return {"message":"The User with current Email already exists"}
+		return {"message":"The User with current Email already exists,Please provide new email"}
 	return {}
 
 @app.route("/airlinesignup",methods = ['get','post'])
