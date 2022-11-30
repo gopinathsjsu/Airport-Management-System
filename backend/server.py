@@ -163,3 +163,25 @@ def insertgate():
 		return {"message":"Success", "data":gates}
 	return {"message":"You cannot access this page"}
 
+@app.route("/api/insertbaggage",methods = ['get','post'])
+def insertbaggage():
+	if "username" in session and session['org'] == 'airport':
+		if request.method == "POST":
+			d = request.json
+			d["lastassignedFlight"] = ""
+			d["lastAssignedTime"] = 0
+			d["status"] = 0
+			d["comments"] = "New gate"
+			collection = db['baggages']
+			if collection.find_one({'name':d['name']}) == None:
+				collection.insert_one(d)
+				return {"message":"Success","status":"success" }
+			return {"message":"The baggage is already present in the list"}
+		collection = db['baggages']
+		baggages = []
+		for i in collection.find():
+			del i['_id']
+			baggages.append(i)
+		return {"message":"success","status":"success", "data":baggages}
+	return {"message":"You cannot access this page"}
+
