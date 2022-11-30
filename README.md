@@ -49,7 +49,7 @@ Tech Stack-
 
 Frontend -React
 
-Backend- Flask 
+Backend- Flask(python)
 
 Datbase-Mongodb
 
