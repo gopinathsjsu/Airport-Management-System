@@ -126,8 +126,9 @@ Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-te
 
 ## Architecture Diagram:
 
+## Use Case Diagram:
 
-
+![abc](https://user-images.githubusercontent.com/41760133/204973864-9ea37a88-fec3-4727-8cc0-53ef71618003.jpg)
 
 ## Design Decisions:
 
