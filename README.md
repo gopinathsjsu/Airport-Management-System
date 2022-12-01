@@ -81,12 +81,7 @@ Team Members:
 - REST API: Postman(Testing APIs)
 - Cloud: AWS EC2
 
-## TASKS COMPLETED:
-
-- ### Backend ###
-  - 
-- ### Frontend ###
-  
+## Feature Set:
 
 ## UI Wireframes:
 Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-team?node-id=0%3A1&t=ZVJbCbGo2jiwnRlG-0
@@ -120,9 +115,6 @@ Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-te
 
 
 
-## Component Diagram:
-
-
 
 ## Architecture Diagram:
 
@@ -132,7 +124,7 @@ Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-te
 
 ## Design Decisions:
 
-## Feature Set:
+
 
 -
 
