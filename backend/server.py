@@ -325,6 +325,143 @@ def modifyflight():
 		return {"message":"Success","data" : all_flights}
 	return {"message":"You cannot access this page"}
 
+@app.route("/api/assignflights")
+def assignflights():
+	flights_collection = db['flights']
+	gates_collection = db['gates']
+	baggage_collection = db['baggages']
+	available_gates = list(gates_collection.find({"lastAssignedTime":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))},"status":1}).sort("lastAssignedTime"))
+	available_baggage = list(baggage_collection.find({"lastAssignedTime":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))},"status":1}).sort("lastAssignedTime"))
+	gindex = 0
+	bindex = 0
+	terminal_mapping = {}
+	for i in available_gates:
+		i1 = i['name']
+		if i1[0] in terminal_mapping:
+			terminal_mapping[i1[0]]['gates'].append(i1)
+		else:
+			terminal_mapping[i1[0]] = {'gates' : [i1],'baggage':[]}
+	for i in available_baggage:
+		i1 = i['name']
+		t = i1.split("-")[-1][0]
+		if t in terminal_mapping:
+			terminal_mapping[t]['baggage'].append(i)
+	print(available_baggage,available_gates,terminal_mapping)
+	print(datetime.datetime.now(tz=timezone('US/Pacific')).timestamp())
+	for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))}}):
+		print(i,datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific')))
+		if i['gate'] == "":
+			f = False
+			if len(available_gates) == 0 or i['time']<available_gates[0]['lastAssignedTime']+3600:
+				flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+				print("No gates available")
+				continue
+			if i['status'] == 'D':
+				i['gate'] = available_gates[0]['name']
+				gates_collection.update_one({"name":available_gates[0]['name']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+				gate = available_gates.pop(0)
+				try:
+					terminal_mapping[gate[0]]['gates'].pop(terminal_mapping[gate[0]]['gates'].index(gate))
+				except:
+					pass
+				flights_collection.update_one({"name":i["name"]},{"$set":{"baggage":i["baggage"],"gate":i["gate"]}})
+			if gindex == len(available_gates) or i['time']<available_gates[gindex]['lastAssignedTime']+3600:
+				pass
+			if i['status'] == 'A':
+				if len(available_baggage) ==0 or i['time']<available_baggage[0]['lastAssignedTime']+3600:
+					flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+					continue
+				for k in range(len(available_gates)):
+					if i['time']>available_gates[k]['lastAssignedTime']+3600 and len(terminal_mapping[available_gates[k]['name'][0]]['baggage'])>0 and i['time'] > terminal_mapping[available_gates[k]['name'][0]]['baggage'][0]['lastAssignedTime'] + 3600:
+						f = True
+						i['gate'] = available_gates[k]['name']
+						i['baggage'] = terminal_mapping[available_gates[k]['name'][0]]['baggage'][0]['name']
+						print(available_gates[k]['name'][0],terminal_mapping[available_gates[k]['name'][0]]['baggage'],len(terminal_mapping[available_gates[k]['name'][0]]['baggage']))
+						bag = terminal_mapping[available_gates[k]['name'][0]]['baggage'].pop(0)
+						baggage_collection.update_one({"name":bag['name']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+						gates_collection.update_one({"name":i['gate']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+						flights_collection.update_one({"name":i["name"]},{"$set":{"baggage":i["baggage"],"gate":i["gate"]}})
+						available_gates.pop(k)
+						break
+				if f == False:
+					flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+					continue
+	available_gates = list(gates_collection.find({"lastAssignedTime":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600},"status":1}).sort("lastAssignedTime"))
+	available_baggage = list(baggage_collection.find({"lastAssignedTime":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600},"status":1}).sort("lastAssignedTime"))
+	gindex = 0
+	bindex = 0
+	print(available_gates,available_baggage)
+	terminal_mapping = {}
+	for i in available_gates:
+		i1 = i['name']
+		if i1[0] in terminal_mapping:
+			terminal_mapping[i1[0]]['gates'].append(i1)
+		else:
+			terminal_mapping[i1[0]] = {'gates' : [i1],'baggage':[]}
+	for i in available_baggage:
+		i1 = i['name']
+		t = i1.split("-")[-1][0]
+		if t in terminal_mapping:
+			terminal_mapping[t]['baggage'].append(i)
+	print(available_baggage,available_gates,terminal_mapping)
+	print(datetime.datetime.now(tz=timezone('US/Pacific')).timestamp())
+	for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+7200,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))}}):
+		print(i,datetime.datetime.fromtimestamp(i['time'],tz=timezone('US/Pacific')))
+		if i['gate'] == "":
+			f = False
+			if len(available_gates) == 0 or i['time']<available_gates[0]['lastAssignedTime']+3600:
+				flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+				print("No gates available")
+				continue
+			if i['status'] == 'D':
+				i['gate'] = available_gates[0]['name']
+				gates_collection.update_one({"name":available_gates[0]['name']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+				gate = available_gates.pop(0)
+				try:
+					terminal_mapping[gate[0]]['gates'].pop(terminal_mapping[gate[0]]['gates'].index(gate))
+				except:
+					pass
+				flights_collection.update_one({"name":i["name"]},{"$set":{"baggage":i["baggage"],"gate":i["gate"]}})
+			if gindex == len(available_gates) or i['time']<available_gates[gindex]['lastAssignedTime']+3600:
+				pass
+			if i['status'] == 'A':
+				if len(available_baggage) ==0 or i['time']<available_baggage[0]['lastAssignedTime']+3600:
+					flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+					continue
+				for k in range(len(available_gates)):
+					if i['time']>available_gates[k]['lastAssignedTime']+3600 and len(terminal_mapping[available_gates[k]['name'][0]]['baggage'])>0 and i['time'] > terminal_mapping[available_gates[k]['name'][0]]['baggage'][0]['lastAssignedTime'] + 3600:
+						f = True
+						i['gate'] = available_gates[k]['name']
+						i['baggage'] = terminal_mapping[available_gates[k]['name'][0]]['baggage'][0]['name']
+						bag = terminal_mapping[available_gates[k]['name'][0]]['baggage'].pop(0)
+						baggage_collection.update_one({"name":bag['name']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+						gates_collection.update_one({"name":i['gate']},{"$set":{"lastassignedflight":i['name'],"lastAssignedTime":i['time']}})
+						flights_collection.update_one({"name":i["name"]},{"$set":{"baggage":i["baggage"],"gate":i["gate"]}})
+						available_gates.pop(k)
+						break
+				if f == False:
+					flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+					continue
+	# for i in flights_collection.find({"time":{"$lt":datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+7200,'$gt':datetime.datetime.timestamp(datetime.datetime.now(tz=timezone('US/Pacific')))+3600}}):
+	# 	if i['gate'] == "":
+	# 		if gindex == len(available_gates) or i['time']<available_gates[gindex]['lastAssignedTime']+3600:
+	# 			print("no gates available",gindex,i['time'],available_gates[gindex]['lastAssignedTime']+3600)
+	# 			flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+	# 			continue
+	# 		if i['status'] == 'A':
+	# 			if bindex == len(available_baggage) or i['time']<available_baggage[bindex]['lastAssignedTime']+3600:
+	# 				flights_collection.update_one({"name":i['name']},{"$set":{"time":i['time']+600}})
+	# 				continue
+	# 			i['baggage'] = available_gates[bindex]['name']
+	# 			baggage_collection.update_one({"name":available_baggage[bindex]['name']},{"$set":{"lastassignedflight":i['name'],"lastassignedname":i['time']}})
+	# 			bindex+=1
+	# 		i['gate'] = available_gates[gindex]['name']
+	# 		gates_collection.update_one({"name":available_gates[gindex]['name']},{"$set":{"lastassignedflight":i['name'],"lastassignedname":i['time']}})
+	# 		gindex+=1
+	# 	flights_collection.update_one({"name":i["name"]},{"$set":{"baggage":i["baggage"],"gate":i["gate"]}})
+	return {"message":"Flights have been assigned"}
+
+
 @app.route("/api/getflights")
 def getflights():
 	flights_collection = db['flights']
