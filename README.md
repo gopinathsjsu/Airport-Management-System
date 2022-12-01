@@ -1,4 +1,5 @@
-# team-project-sunrisers
+# Team-sunrisers
+# AIRPORT MANAGEMENT SYSTEM
 team-project-sunrisers created by GitHub Classroom
 
 Implement an end2end Airport Management system that can be configured for a given airport (Web interface or Mobile app interface with supporting Backend APIs), that integrates Airline Flight Schedules, Gate Assignments, Baggage Claim assignment for arriving flights
@@ -53,13 +54,13 @@ Team Members:
 ## Contributions 
 
 
-### Vikas Tadepu : Front-End and Back-End
+# Vikas Tadepu : Front-End and Back-End
 
-### Thanuj Kumar Janugani: Front-End and Back-End
+# Thanuj Kumar Janugani: Front-End and Back-End
 
-### Varun Raj Badri: Front-End and Back-End
+# Varun Raj Badri: Front-End and Back-End
 
-### Jatin Lingala:Front-End and Back-End
+# Jatin Lingala:Front-End and Back-End
 
 
 
