@@ -53,13 +53,13 @@ Team Members:
 ## Contributions 
 
 
-### Vikas Tadepu : Front-End and Back-End
+# Vikas Tadepu : Front-End and Back-End
 
-### Thanuj Kumar Janugani: Front-End and Back-End
+# Thanuj Kumar Janugani: Front-End and Back-End
 
-### Varun Raj Badri: Front-End and Back-End
+# Varun Raj Badri: Front-End and Back-End
 
-### Jatin Lingala:Front-End and Back-End
+# Jatin Lingala:Front-End and Back-End
 
 
 
@@ -81,20 +81,20 @@ Team Members:
 - REST API: Postman(Testing APIs)
 - Cloud: AWS EC2
 
-## Feature Set:
+# Feature Set:
 
-# Passenger:
+## Passenger:
 - Can view the arrival/departure schedule of flights.
 - Can also view the baggage carousal details of arrival flights.
-# Airline Employee:
+## Airline Employee:
 - Can be able to add/modify the schedule of flights.
-# Airport Employee
+## Airport Employee
 - Can enable or disable the gate for maintenance.
 - Can enable or disable the baggage carousel.
 - Approves the signup requests
 - Can add new Airline service to the airport.
 - Can add gates and baggage carousels.
-# System:
+## System:
 - Assigns gates.
 - Asssigns baggage carousal to the arriving flights.
 
