@@ -83,6 +83,21 @@ Team Members:
 
 ## Feature Set:
 
+# Passenger:
+- Can view the arrival/departure schedule of flights.
+- Can also view the baggage carousal details of arrival flights.
+# Airline Employee:
+- Can be able to add/modify the schedule of flights.
+# Airport Employee
+- Can enable or disable the gate for maintenance.
+- Can enable or disable the baggage carousel.
+- Approves the signup requests
+- Can add new Airline service to the airport.
+- Can add gates and baggage carousels.
+# System:
+- Assigns gates.
+- Asssigns baggage carousal to the arriving flights.
+
 ## UI Wireframes:
 Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-team?node-id=0%3A1&t=ZVJbCbGo2jiwnRlG-0
 <img width="689" alt="Screenshot 2022-11-29 at 10 50 37 PM" src="https://user-images.githubusercontent.com/54031828/204728985-3c03aa08-b2aa-4aa2-9717-c8d62cb0db8f.png">
