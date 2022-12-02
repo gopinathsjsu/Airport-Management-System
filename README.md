@@ -99,6 +99,24 @@ Team Members:
 - Assigns gates.
 - Asssigns baggage carousal to the arriving flights.
 
+
+## ER DIAGRAM:
+
+
+
+![WhatsApp Image 2022-10-26 at 1 44 17 PM](https://user-images.githubusercontent.com/54031828/198146885-79e95b55-2862-405d-8711-c6c334e72da0.jpeg)
+
+## Architecture Diagram:
+
+
+## AWS CLOUD
+Load Balacer DNS: SJU-Airport-767720459.us-west-2.elb.amazonaws.com
+![instances1](https://user-images.githubusercontent.com/41760133/205189042-42dd7945-7585-493c-8b6a-508eaabec822.JPG)
+![Load_Balancer](https://user-images.githubusercontent.com/41760133/205189053-e491ba5d-225d-44ba-a83f-0871973ee01a.JPG)
+
+## Use Case Diagram:
+ 
+![abc (1)](https://user-images.githubusercontent.com/41760133/204976509-8052f9db-42ff-4284-bf91-f86366d551ad.jpg)
 ## UI Wireframes:
 Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-team?node-id=0%3A1&t=ZVJbCbGo2jiwnRlG-0
 <img width="689" alt="Screenshot 2022-11-29 at 10 50 37 PM" src="https://user-images.githubusercontent.com/54031828/204728985-3c03aa08-b2aa-4aa2-9717-c8d62cb0db8f.png">
@@ -123,18 +141,4 @@ Figma design Linkhttps: www.figma.com/file/F5sQzR8TE6mZyyn1si06qb/SJU-Airport-te
 
 
 
-## ER DIAGRAM:
-
-
-
-![WhatsApp Image 2022-10-26 at 1 44 17 PM](https://user-images.githubusercontent.com/54031828/198146885-79e95b55-2862-405d-8711-c6c334e72da0.jpeg)
-
-
-
-
-## Architecture Diagram:
-
-## Use Case Diagram:
- 
-![abc (1)](https://user-images.githubusercontent.com/41760133/204976509-8052f9db-42ff-4284-bf91-f86366d551ad.jpg)
 
