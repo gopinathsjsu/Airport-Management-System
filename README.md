@@ -110,8 +110,10 @@ Team Members:
 
 
 ## AWS CLOUD
-Load Balacer DNS: SJU-Airport-767720459.us-west-2.elb.amazonaws.com
+#Load Balacer DNS: SJU-Airport-767720459.us-west-2.elb.amazonaws.com
+
 ![instances1](https://user-images.githubusercontent.com/41760133/205189042-42dd7945-7585-493c-8b6a-508eaabec822.JPG)
+
 ![Load_Balancer](https://user-images.githubusercontent.com/41760133/205189053-e491ba5d-225d-44ba-a83f-0871973ee01a.JPG)
 
 ## Use Case Diagram:
