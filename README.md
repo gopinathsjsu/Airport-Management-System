@@ -108,8 +108,11 @@ Team Members:
 
 ## Architecture Diagram:
 
+![UML-Page-12](https://user-images.githubusercontent.com/41760133/205190437-94936059-a98a-49dd-98d3-c8b4be263406.jpg)
+
 
 ## AWS CLOUD
+
 #Load Balacer DNS: SJU-Airport-767720459.us-west-2.elb.amazonaws.com
 
 ![instances1](https://user-images.githubusercontent.com/41760133/205189042-42dd7945-7585-493c-8b6a-508eaabec822.JPG)
