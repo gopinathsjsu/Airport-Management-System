@@ -34,7 +34,7 @@ Develop a Web or mobile UI that will make use of the APIs
 Create your own database with mock data - use SFO or SJC as an example airport for your data
 
 Sprint Task sheet:
-https://docs.google.com/spreadsheets/d/1xVN1TYFBGojNXxERLfRykjC6AGKlkUP404rh5YZaU9U/edit#gid=0
+https://docs.google.com/spreadsheets/d/1_prkpVrGgiKawTzG38J9yJV51SBAehM06tZmhmsZ2x4/edit?usp=sharing
 
 # Sunrisers
 
